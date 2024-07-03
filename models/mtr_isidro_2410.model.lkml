@@ -8,10 +8,10 @@ datagroup: mtr_isidro_2410_default_datagroup {
   max_cache_age: "1 hour"
 }
 
-persist_with: mtr_isidro_2410_default_datagroup
 
 explore: billion_orders {
   join: orders {
+    #fields: [ALL_FIELDS*]
     type: left_outer
     sql_on: ${billion_orders.order_id} = ${orders.id} ;;
     relationship: many_to_one
@@ -25,8 +25,6 @@ explore: billion_orders {
 }
 
 explore: connection_reg_r3 {}
-
-explore: customer {}
 
 explore: day_of_week {}
 
@@ -61,8 +59,6 @@ explore: fakeorders {
 explore: fatal_error_user_derived_base {}
 
 explore: flights {}
-
-explore: foo {}
 
 explore: human {}
 
@@ -106,17 +102,10 @@ explore: inventory_items {
   }
 }
 
-explore: map_layer {}
-
-explore: orders {
-  join: users {
-    type: left_outer
-    sql_on: ${orders.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
-}
 
 explore: order_items {
+  # sql_always_where: ${users.gender}="f" ;;
+  # always_filter: {filters: [orders.status: "COMPLETED"]}
   join: orders {
     type: left_outer
     sql_on: ${order_items.order_id} = ${orders.id} ;;
@@ -140,32 +129,8 @@ explore: order_items {
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
     relationship: many_to_one
   }
-}
 
-explore: order_items_vijaya {
-  join: orders {
-    type: left_outer
-    sql_on: ${order_items_vijaya.order_id} = ${orders.id} ;;
-    relationship: many_to_one
-  }
 
-  join: inventory_items {
-    type: left_outer
-    sql_on: ${order_items_vijaya.inventory_item_id} = ${inventory_items.id} ;;
-    relationship: many_to_one
-  }
-
-  join: users {
-    type: left_outer
-    sql_on: ${orders.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
-
-  join: products {
-    type: left_outer
-    sql_on: ${inventory_items.product_id} = ${products.id} ;;
-    relationship: many_to_one
-  }
 }
 
 explore: order_status_vijaya {}
@@ -188,11 +153,6 @@ explore: salary {
   }
 }
 
-explore: sample_data {}
-
-explore: sample_table {}
-
-explore: sandbox_scratch {}
 
 explore: saralooker {
   join: users {
@@ -214,20 +174,9 @@ explore: sindhu {
 
 explore: demo_db_temporary {}
 
+explore: test {}
 
-explore: ten_million_orders {
-  join: orders {
-    type: left_outer
-    sql_on: ${ten_million_orders.order_id} = ${orders.id} ;;
-    relationship: many_to_one
-  }
-
-  join: users {
-    type: left_outer
-    sql_on: ${orders.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
-}
+explore: test_space_in_column_name {}
 
 explore: users {}
 
@@ -238,3 +187,13 @@ explore: user_data {
     relationship: many_to_one
   }
 }
+
+explore: viet {}
+
+explore: vvimgsrc1onerroralert2ll {}
+
+explore: xin_test_for_bug2 {}
+
+explore: xss_test_8 {}
+
+explore: xss_test_9 {}
