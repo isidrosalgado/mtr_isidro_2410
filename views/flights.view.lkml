@@ -70,4 +70,6 @@ view: flights {
   measure: count {
     type: count
   }
+
+
 }

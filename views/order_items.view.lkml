@@ -12,11 +12,7 @@ view: order_items {
     # hidden: yes
     sql: ${TABLE}.inventory_item_id ;;
   }
-  dimension: order_id {
-    type: number
-    # hidden: yes
-    sql: ${TABLE}.order_id ;;
-  }
+
   dimension: phone {
     type: string
     sql: ${TABLE}.phone ;;
@@ -37,5 +33,38 @@ view: order_items {
   measure: count {
     type: count
     drill_fields: [id, orders.id, inventory_items.id]
+  }
+
+  dimension: order_id {
+    type: string
+    label: "label1"
+    case: {
+      when: {
+        sql: ${TABLE}.order_id is null ;;
+        label: "label7"
+
+      }
+      when: {
+        sql: ${TABLE}.order_id <= 100;;
+        label: "label2"
+      }
+      when: {
+        label: "label3"
+        sql: ${TABLE}.order_id <= 200 ;;
+      }
+      when: {
+        label: "label4"
+        sql: ${TABLE}.order_id <= 300 ;;
+      }
+      when: {
+        label: "label5"
+        sql: ${TABLE}.order_id<= 400 ;;
+      }
+      when: {
+        label: "label6"
+        sql: ${TABLE}.order_id <= 500 ;;
+      }
+      else: "Greater than 5 years"
+    }
   }
 }

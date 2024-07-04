@@ -133,17 +133,8 @@ explore: order_items {
 
 }
 
-explore: order_status_vijaya {}
 
-explore: pegdates {}
 
-explore: person {}
-
-explore: persons {}
-
-explore: persons2 {}
-
-explore: products {}
 
 explore: salary {
   join: dept {
@@ -176,6 +167,8 @@ explore: demo_db_temporary {}
 
 explore: test {}
 
+explore: products {}
+
 explore: test_space_in_column_name {}
 
 explore: users {}
@@ -193,7 +186,3 @@ explore: viet {}
 explore: vvimgsrc1onerroralert2ll {}
 
 explore: xin_test_for_bug2 {}
-
-explore: xss_test_8 {}
-
-explore: xss_test_9 {}
