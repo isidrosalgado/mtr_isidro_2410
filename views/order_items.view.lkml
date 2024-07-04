@@ -37,11 +37,11 @@ view: order_items {
 
   dimension: order_id {
     type: string
-    label: "label1"
+    label: "label test localization"
     case: {
       when: {
         sql: ${TABLE}.order_id is null ;;
-        label: "label7"
+        label: "label1"
 
       }
       when: {
