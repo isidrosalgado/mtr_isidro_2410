@@ -35,19 +35,16 @@ view: order_items {
     drill_fields: [id, orders.id, inventory_items.id]
   }
 
+  # Testing liquid https://looker.zendesk.com/agent/tickets/613704
   dimension: order_id {
     type: string
-    label: "label test localization"
     case: {
       when: {
         sql: ${TABLE}.order_id is null ;;
-        label: "label1"
-
       }
       when: {
-        sql: ${TABLE}.order_id <= 100;;
-        label: "label2"
-      }
+        label: "label3"
+        sql: ${TABLE}.order_id <= 100;;      }
       when: {
         label: "label3"
         sql: ${TABLE}.order_id <= 200 ;;
@@ -62,9 +59,43 @@ view: order_items {
       }
       when: {
         label: "label6"
-        sql: ${TABLE}.order_id <= 500 ;;
+        sql: ${TABLE}.order_id >= 500000 ;;
       }
       else: "Greater than 5 years"
     }
   }
+  #dimension: order_id {
+   # type: string
+  #  label:"{% if _user_attributes['locale'] == 'en' %} Kein Installationsdatum {% elsif _user_attributes['locale'] == 'fr_FR' %} Date d'installation {% else %} No Install Date {% endif %}"
+  #  # hidden: yes
+  #  case: {
+  #    when: {
+  #      sql: ${TABLE}.order_id is null ;;
+  #      label: "{% if _user_attributes['locale'] == 'en' %} Kein Installationsdatum Date d'installation No Install Date {% else %} No Install Date {% endif %}"
+  #
+  #    }
+  #    when: {
+  #      sql: ${TABLE}.order_id <= 100;;
+  #      label: "{% if _user_attributes['locale'] == 'en' %} Kein Installationsdatum Date d'installation No Install Date {% else %} No Install Date {% endif %}"
+  #
+  #    }
+  #    when: {
+  #      label: "1-2 Yrs"
+  #      sql: ${TABLE}.order_id <= 200 ;;
+  #    }
+  ##    when: {
+  #      label: "2-3 Yrs"
+  #      sql: ${TABLE}.order_id <= 300 ;;
+   #   }
+  #    when: {
+  #      label: "3-4 Yrs"
+  #      sql: ${TABLE}.order_id<= 400 ;;
+  #    }
+  #    when: {
+  #      label: "4-5 Yrs"
+  #      sql: ${TABLE}.order_id <= 500 ;;
+  #    }
+  #    else: "Greater than 5 years"
+  #  }
+  #}
 }

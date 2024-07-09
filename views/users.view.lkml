@@ -2,6 +2,11 @@ view: users {
   sql_table_name: demo_db.users ;;
   drill_fields: [id]
 
+  measure: avg_age {
+    type: average
+    sql: ${TABLE}.age ;;
+  }
+
   dimension: id {
     primary_key: yes
     type: number
@@ -57,15 +62,15 @@ view: users {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	id,
-	first_name,
-	last_name,
-	events.count,
-	orders.count,
-	saralooker.count,
-	sindhu.count,
-	user_data.count
-	]
+  id,
+  first_name,
+  last_name,
+  events.count,
+  orders.count,
+  saralooker.count,
+  sindhu.count,
+  user_data.count
+  ]
   }
 
 }
