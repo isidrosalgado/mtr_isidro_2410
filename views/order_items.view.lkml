@@ -59,7 +59,7 @@ view: order_items {
       }
       when: {
         label: "label6"
-        sql: ${TABLE}.order_id >= 500000 ;;
+        sql: ${TABLE}.order_id >= 5000 ;;
       }
       else: "Greater than 5 years"
     }
