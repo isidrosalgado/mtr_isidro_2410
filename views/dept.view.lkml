@@ -15,4 +15,5 @@ view: dept {
     type: count
     drill_fields: [dept_id, dept_name, salary.count]
   }
+
 }
