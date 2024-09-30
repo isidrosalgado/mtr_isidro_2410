@@ -22,13 +22,7 @@ explore: inventory_items {
 
 
 
-explore: orders {
-  join: users {
-    type: left_outer
-    sql_on: ${orders.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
-}
+
 
 explore: five_zeros {
   view_name: five_zeros
@@ -41,4 +35,3 @@ explore: persons2 {}
 explore: persons {}
 explore: test {}
 explore: sample_data {}
-explore: users {}
